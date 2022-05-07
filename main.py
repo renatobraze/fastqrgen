@@ -10,7 +10,7 @@ from tkinter.colorchooser import askcolor
 from tkinter import messagebox
 import pyqrcode as pqr
 import os
-from PIL import Image, ImageTk
+from PIL import Image
 
 #Initial color set
 color_fg = ((0,0,0), '#000000')
@@ -57,7 +57,6 @@ def bg_color():
 root = Tk()
 root.title('FastQRgen')
 root.resizable(width=False, height=False)
-root.iconphoto(True,PhotoImage(file='app_icon.png'))
 
 #Window centralize
 window_width = 300
@@ -68,14 +67,8 @@ center_x = int(screen_width/2 - window_width / 2)
 center_y = int(screen_height/2 - window_height / 2)
 root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
 
-#Icon creation
-image = Image.open('app_icon.png')
-image = image.resize((30,30))
-img = ImageTk.PhotoImage(image)
-
 #Widgets creation
 name_frame = Frame(root)
-app_icon = Label(name_frame ,image=img)
 app_name = Label(name_frame, text='FastQRgen', font='Corbel 24 bold')
 instructions_text = Label(text='Insira o conteudo abaixo', font='Corbel 12 bold')
 input_widget = Entry(width=30, font='Candara 10')
@@ -93,7 +86,6 @@ secundary_color_selector = Button(adv_options, command=bg_color, width=13, relie
 
 #Widgets set position
 name_frame.pack()
-app_icon.pack(side=LEFT)
 app_name.pack(pady=15, side=RIGHT)
 instructions_text.pack(pady=10)
 input_widget.pack()
